@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/*section(article)=========================================*/
+
+.drama_board_table_title {
+	width: 80%;
+	height: 100px;
+	line-height: 100px;
+	margin: 1% auto;
+	text-align: center;
+}
+.drama_board_table_title > span:nth-child(1) {
+	font-size: 3em;
+}
+.drama_board_table_title > span:nth-child(2) {
+	font-size: 1em;
+}
+
+.drama_board_table {
+	width: 96%;
+	margin: 0 auto;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+thead th:nth-child(1) {
+	width: 10%;
+}
+thead th:nth-child(2) {
+	width: 15%;
+}
+thead th:nth-child(3) {
+	width: 50%;
+}
+thead th:nth-child(4) {
+	width: 15%;
+}
+thead th:nth-child(5) {
+	width: 10%;
+}
+tbody {
+	text-align: center;
+}
+tbody td:nth-child(3) {
+	text-align: left;
+}
+
+.tfoot {
+	width: 96%;
+	margin: 0 auto;
+}
+button {
+	font-size: 1em;
+	padding: 0.3%;
+	margin: 1% 0;
+}
+
+.pagination {
+	text-align: center;
+}
+.pagination > a {
+	padding: 6px;
+	font-size: 0.9em;
+	border: 1.5px solid black;
+	font-family: "돋움";
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.page_number {
+	font-size: 1.2em;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#choice {
+	color: red;
+}

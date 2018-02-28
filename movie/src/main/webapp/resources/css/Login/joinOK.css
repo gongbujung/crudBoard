@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+body {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#joinOK_page {
+	overflow: hidden;
+	background: green;
+	height: 1000px;
+}
+#joinOK_form {
+	overflow: hidden;
+	background: white;
+	height: 500px;
+	line-height: 100px;
+	margin: 45% 0;
+	text-align: center;
+}
+#joinOK_form > a {
+	text-decoration: none;
+}

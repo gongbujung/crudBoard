@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/*전체=======================================================*/
+
+body {
+	width: 100%;
+}
+
+a {
+	text-decoration: none; color: black;
+}
+a:hover {
+	color: white;
+}
+
+/*header===================================================*/
+
+#movie_login {
+	background: #c6e3fb;
+	height: 50px;
+}
+.movie_login:nth-child(1) {
+	margin-left: 85%;
+	line-height: 50px;
+}
+.movie_login:nth-child(2) {
+	margin-left: 1%;
+}
+
+#movie_title {
+	max-width: 100%;
+	height: 200px;
+}
+
+/*nav======================================================*/
+
+#movie_nav {
+	width: 70%;
+	margin: 0 auto;
+	background: #c6e3fb;
+	overflow: hidden;
+	text-align: center;
+	height: 50px;
+}
+.movie_nav {
+	float: left;
+	width: 32%;
+	height: 50px;
+	line-height: 50px;
+}
+.movie_nav > a {
+	display: block;
+}
+
+.movie_nav:nth-child(1) {
+	margin-left: 2%
+}
+
+
+/*section==================================================*/
+
+#movie_section {
+	height: 1000px;
+	overflow: hidden;
+}
+
+/*section(article)=========================================*/
+
+#article_nav {
+	float: left;
+	width: 15%;
+	height: 1000px;
+	overflow: hidden;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+#article_nav li.current {
+	 background: #f9f9f9;				/* 선택한 네비만 색상 입히기 */
+	 border-bottom: 2px solid #80fffc;
+}
+
+.article_nav {
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	background: #c6e3fb;
+	border-bottom: 1px solid #80fffc;
+}
+.article_nav > a {
+	display: block;
+}
+
+#article_content {
+	overflow: hidden;
+	float: left;
+	width: 70%;
+	height: 1000px;
+}
+.article_content {
+	display: none;						/* 네비가 선택되지 않은 컨텐츠는 안보이게 처리 */
+	background: #f9f9f9;
+	padding: 15px;
+}
+
+.article_content.current {
+	display: inherit;					/* 클릭한 네비의 컨텐츠는 네비가 선택되면 나타남 */
+	width: 100%;
+	height: 1000px;						
+}
+
+
+/*section(aside)===========================================*/
+
+#movie_aside {
+	float: left;
+	width: 15%;
+	height: 1000px;
+}
+
+/*footer===================================================*/
+
+#movie_footer {
+	background: #c0c0c0;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}

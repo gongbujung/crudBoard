@@ -1,0 +1,102 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.java.dao.IDao">
+
+	<select id="numberOfPost" resultType="int">
+		select count(*) from drama_board
+	</select>
+	
+	<!-- index.jsp 페이지에서 드라마 게시판 글 목록 출력 -->
+	<select id="indexDramaBoard" resultType="com.java.dto.DramaBoardDto">
+		select * from (select * from drama_board where bReply = 0 order by bNum desc) where rownum <![CDATA[<]]>=8
+	</select>
+	
+	<!-- index.jsp 페이지에서 최신답글 목록 출력 -->
+	<select id="indexCurrentReply" resultType="com.java.dto.DramaBoardDto">
+		select * from (select * from drama_board where bReply > 0 order by bNum desc) where rownum <![CDATA[<]]>=6
+	</select>
+	
+	<!-- index.jsp 페이지에서 가장 많이 본 글 목록 출력 -->
+	<select id="indexPopularView" resultType="com.java.dto.DramaBoardDto">
+		select * from (select * from drama_board order by bHit desc) where rownum <![CDATA[<]]>=6
+	</select>
+	
+	<!-- 회원가입시 아이디 중복체크 -->
+	<select id="joinIdCheck" resultType="int">
+		select count(*) from memberdto where id = #{idCheck}
+	</select>
+	
+	<!-- 회원가입시 이름 중복체크 -->
+	<select id="joinNameCheck" resultType="int">
+		select count(*) from memberdto where name = #{nameCheck}
+	</select>
+	
+	<!-- 로그인시 아이디와 비밀번호 확인 -->
+	<select id="loginOK" resultType="com.java.dto.MemberDto">
+		select * from memberdto where id = #{id} and password = #{password}
+	</select>
+	
+	<!-- 게시판 목록 가져오기 -->
+	<select id="dramaBoardList" resultType="com.java.dto.DramaBoardDto">
+		select * from (select rownum as rnum, dramaBoard.* from (select * from drama_Board order by bGroup desc, bReply asc) dramaBoard where rownum <![CDATA[<]]>=10 + (#{currentPageNo} * 10)) where rnum >=1 + (#{currentPageNo} * 10)                                                             
+	</select>
+	
+	<!-- 게시판 작성자 이름 가져오기 -->
+	<select id="dramaBoardWriter" resultType="String">
+		select name from memberdto where id = #{session_id}
+	</select>
+	
+	<!-- 게시판 글 상세보기 -->
+	<select id="dramaBoardContentView" resultType="com.java.dto.DramaBoardDto">
+		select * from drama_board where bNum = #{strNum}
+	</select>
+	
+	<!-- 게시판 글 수정하기 -->
+	<select id="dramaBoardModifyView" resultType="com.java.dto.DramaBoardDto">
+		select * from drama_board where bNum = #{strNum}
+	</select>
+	
+	<!-- 게시판 답글 작성하는 뷰의 정보 가져오기 -->
+	<select id="dramaBoardReplyView" resultType="com.java.dto.DramaBoardDto">
+		select * from drama_board where bNum = #{strNum}
+	</select>
+	
+	<!-- 회원가입 정보 DB에 입력 -->
+	<insert id="joinOK">
+		insert into memberdto (id, password, name, email, favorite) values (#{id}, #{password}, #{name}, #{email}, #{favorite})
+	</insert>
+	
+	<!-- 게시판 글 작성정보 입력 -->
+	<insert id="dramaBoardWrite">
+		insert into drama_board (bNum, bName, bTitle, bContent, bHit, bGroup, bReply, bIndent) values (drama_board_seq.nextval, #{bName}, #{bTitle}, #{bContent}, 0, drama_board_seq.currval, 0, 0)
+	</insert>
+	
+	<!-- 게시판 답글 작성하기 -->
+	<insert id="dramaBoardReply">
+		insert into drama_board (bNum, bTitle, bName, bContent, bGroup, bReply, bIndent) values (drama_board_seq.nextval, #{bTitle}, #{bName}, #{bContent}, #{bGroup}, #{bReply}+1, #{bIndent}+1)
+	</insert>
+	
+	<!-- 게시판 글 수정하기 -->
+	<update id="dramaBoardModify">
+		update drama_board set bTitle = #{bTitle}, bContent = #{bContent} where bNum = #{bNum}
+	</update>
+	
+	<!-- 게시글 조회수 관리 -->
+	<update id="dramaBoardUpHit">
+		update drama_board set bHit = bHit + 1 where bNum = #{bNum}
+	</update>
+	
+	<!-- 게시글과 답글의 계층표현 -->
+	<update id="dramaBoardReplyShape">
+		update drama_board set bReply = bReply + 1 where bGroup = #{bGroup} and bReply > #{bReply}
+	</update>
+	
+	<!-- 게시판 글 삭제하기 -->
+	<delete id="dramaBoardDelete">
+		delete from drama_board where bNum = #{strNum}
+	</delete>
+
+</mapper>

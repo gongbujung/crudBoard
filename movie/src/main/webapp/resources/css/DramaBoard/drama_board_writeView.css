@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/*section(article)=========================================*/
+
+.drama_board_writeView_table{
+	width: 90%;
+	margin: 5% auto;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.drama_board_writeView_table td {
+	padding: 1%;
+}
+button {
+	font-size: 1em;
+	margin: 0 0.2%;
+}

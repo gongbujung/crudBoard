@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/*section(article)=========================================*/
+
+.drama_board_replyView_table {
+	width: 96%;
+	margin: 0% auto;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+thead td {
+	padding: 0.5%;
+}
+thead td:nth-child(2) {
+	text-align: center;
+}
+thead th:nth-child(1) {
+	width: 10%;
+}
+thead td:nth-child(2) {
+	width: 11%;
+}
+thead th:nth-child(3) {
+	width: 10%;
+}
+thead td:nth-child(4) {
+	width: 18%;
+}
+thead td:nth-child(5) {
+	width: 51%;
+}
+
+tbody td {
+	height: 200px;
+}
+
+.tfoot {
+	width: 96%;
+	margin: 0 auto;
+}
+
+button {
+	font-size: 1em;
+	padding: 0.3%;
+	margin: 1% 0;
+}
